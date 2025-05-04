@@ -63,6 +63,7 @@ from bs4 import BeautifulSoup           # use for extacting data form web's or u
 import nltk     # use for its method like stopwords and tokenizers
 # Download NLTK resources stopwords
 nltk.download('stopwords')      # having the list of stopwords that use to cleaning text
+nltk.download('punkt_tab')
 from nltk.corpus import stopwords # import the stopwords list 
 from nltk.tokenize import word_tokenize # use for tokenize the words 
 
@@ -72,7 +73,7 @@ print("\nPackages are importing succesfully")
 def scraper(url):
     
     webpage = requests.get(url)                                                 # connecting with url using requests module
-    extractor = BeautifulSoup(webpage.text,'lxml')                              # defining the exteactor variable that store the HTML content of url using Beautifulsoup module
+    extractor = BeautifulSoup(webpage.text,'html.parser')                              # defining the exteactor variable that store the HTML content of url using Beautifulsoup module
 
     # Check if the response status code is successful (200 OK)
     if webpage.status_code == 200:
